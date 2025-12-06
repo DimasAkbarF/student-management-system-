@@ -16,7 +16,7 @@ export default function StudentsPage() {
     const [deleteId, setDeleteId] = useState<number | null>(null);
     const [isDeleting, setIsDeleting] = useState(false);
     const [showImport, setShowImport] = useState(false);
-    const [importData, setImportData] = useState<unknown>(null);
+    const [importData, setImportData] = useState<Record<string, unknown>[] | null>(null);
     const [importMode, setImportMode] = useState<'append' | 'replace'>('append');
     const [isImporting, setIsImporting] = useState(false);
     const [message, setMessage] = useState({ type: '', text: '' });
@@ -178,7 +178,7 @@ export default function StudentsPage() {
                     </>
                 }
             >
-                <FileUploader onFileSelect={(data) => setImportData(data)} />
+                <FileUploader onFileSelect={(data) => setImportData(data as Record<string, unknown>[])} />
                 <div className="mt-5">
                     <label className="label">Import Mode</label>
                     <div className="flex gap-5 mt-2">

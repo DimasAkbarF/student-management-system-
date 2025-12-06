@@ -9,7 +9,8 @@ export async function GET() {
         const students = await Student.find({}).sort({ createdAt: -1 }).lean();
 
         // Convert MongoDB documents to plain objects with id field
-        const data = students.map(s => ({
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const data = students.map((s: any) => ({
             id: s._id.toString(),
             nim: s.nim,
             name: s.name,
@@ -42,18 +43,19 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const student = await Student.create(body);
-        const studentObj = student.toObject();
+        const studentDoc = await Student.create(body);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const student = studentDoc as any;
 
         const data = {
-            id: studentObj._id.toString(),
-            nim: studentObj.nim,
-            name: studentObj.name,
-            department: studentObj.department,
-            age: studentObj.age,
-            gpa: studentObj.gpa,
-            createdAt: studentObj.createdAt,
-            updatedAt: studentObj.updatedAt
+            id: student._id.toString(),
+            nim: student.nim,
+            name: student.name,
+            department: student.department,
+            age: student.age,
+            gpa: student.gpa,
+            createdAt: student.createdAt,
+            updatedAt: student.updatedAt
         };
 
         return NextResponse.json({ success: true, data }, { status: 201 });

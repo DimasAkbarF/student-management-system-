@@ -11,14 +11,16 @@ export async function GET(
         await connectDB();
         const { id } = await params;
 
-        const student = await Student.findById(id).lean();
-        if (!student) {
+        const studentDoc = await Student.findById(id).lean();
+        if (!studentDoc) {
             return NextResponse.json(
                 { success: false, error: 'Student not found' },
                 { status: 404 }
             );
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const student = studentDoc as any;
         const data = {
             id: student._id.toString(),
             nim: student.nim,
@@ -47,19 +49,21 @@ export async function PUT(
         const { id } = await params;
         const body = await request.json();
 
-        const student = await Student.findByIdAndUpdate(
+        const studentDoc = await Student.findByIdAndUpdate(
             id,
             { ...body, updatedAt: new Date() },
             { new: true, runValidators: true }
         ).lean();
 
-        if (!student) {
+        if (!studentDoc) {
             return NextResponse.json(
                 { success: false, error: 'Student not found' },
                 { status: 404 }
             );
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const student = studentDoc as any;
         const data = {
             id: student._id.toString(),
             nim: student.nim,

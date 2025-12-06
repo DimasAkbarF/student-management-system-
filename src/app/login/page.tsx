@@ -47,9 +47,9 @@ export default function LoginPage() {
             </div>
 
             <div className="w-full max-w-md">
-                {/* Logo */}
+                {/* Logo - Centered above text */}
                 <div className="text-center mb-8">
-                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                    <div className="w-20 h-20 mx-auto mb-4 overflow-hidden">
                         <Image
                             src="/unpam-logo.png"
                             alt="UNPAM Logo"
@@ -59,8 +59,8 @@ export default function LoginPage() {
                             priority
                         />
                     </div>
-                    <h1 className="text-2xl font-bold text-[var(--color-text)]">UNPAM Student Portal</h1>
-                    <p className="text-[var(--color-text-muted)] mt-2">Sign in to access the dashboard</p>
+                    <h1 className="text-2xl font-bold text-[var(--color-text)]">Student Management</h1>
+                    <p className="text-[var(--color-text-muted)] mt-2">Sign in to your account</p>
                 </div>
 
                 {/* Login Card */}

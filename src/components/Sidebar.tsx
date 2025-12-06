@@ -30,17 +30,17 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
             {/* Sidebar */}
             <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
-                {/* Logo Section */}
+                {/* Logo Section - Logo above text */}
                 <div className="sidebar-logo">
-                    <Link href="/dashboard" className="sidebar-logo-link">
+                    <Link href="/dashboard" className="flex flex-col items-center text-center">
                         <img
                             src="/unpam-logo.png"
                             alt="UNPAM Logo"
-                            className="sidebar-logo-image"
+                            className="sidebar-logo-image mb-3"
                         />
-                        <div className="sidebar-logo-text">
-                            <h1>UNPAM</h1>
-                            <p>Student Management</p>
+                        <div>
+                            <h1 className="text-lg font-bold text-[var(--color-text)]">UNPAM</h1>
+                            <p className="text-xs text-[var(--color-text-muted)]">Student Management</p>
                         </div>
                     </Link>
                 </div>

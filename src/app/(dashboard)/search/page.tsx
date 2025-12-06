@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Card from '@/components/Card';
 import Table from '@/components/Table';
@@ -22,6 +22,14 @@ const fields: { value: SearchField; label: string }[] = [
 ];
 
 export default function SearchPage() {
+    return (
+        <Suspense fallback={<div className="p-8 text-center"><span className="spinner" /></div>}>
+            <SearchContent />
+        </Suspense>
+    );
+}
+
+function SearchContent() {
     const searchParams = useSearchParams();
     const [query, setQuery] = useState(searchParams.get('q') || '');
     const [algorithm, setAlgorithm] = useState<SearchAlgorithm>('linear');
@@ -151,8 +159,8 @@ export default function SearchPage() {
                         <div
                             key={a.value}
                             className={`p-4 rounded-lg border-2 transition-all ${algorithm === a.value
-                                    ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/5'
-                                    : 'border-transparent bg-[var(--color-background)]'
+                                ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/5'
+                                : 'border-transparent bg-[var(--color-background)]'
                                 }`}
                         >
                             <h4 className="font-medium text-[var(--color-text)]">{a.label}</h4>

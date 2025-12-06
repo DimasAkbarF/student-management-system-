@@ -1,0 +1,302 @@
+[
+    {
+        "id": 1,
+        "nim": "242011402104",
+        "name": "Yehezkiel Paskah",
+        "department": "Teknik Informatika",
+        "age": 20,
+        "gpa": 3.42,
+        "createdAt": "2024-01-15T08:00:00.000Z",
+        "updatedAt": "2024-01-15T08:00:00.000Z"
+    },
+    {
+        "id": 2,
+        "nim": "241011402315",
+        "name": "Fazri",
+        "department": "Teknik Informatika",
+        "age": 19,
+        "gpa": 2.91,
+        "createdAt": "2024-01-15T08:01:00.000Z",
+        "updatedAt": "2024-01-15T08:01:00.000Z"
+    },
+    {
+        "id": 3,
+        "nim": "241011400248",
+        "name": "Dimas Akbar F",
+        "department": "Teknik Informatika",
+        "age": 21,
+        "gpa": 3.77,
+        "createdAt": "2024-01-15T08:02:00.000Z",
+        "updatedAt": "2024-01-15T08:02:00.000Z"
+    },
+    {
+        "id": 4,
+        "nim": "241011401769",
+        "name": "Sulthan Arya Satwika",
+        "department": "Teknik Informatika",
+        "age": 18,
+        "gpa": 3.12,
+        "createdAt": "2024-01-15T08:03:00.000Z",
+        "updatedAt": "2024-01-15T08:03:00.000Z"
+    },
+    {
+        "id": 5,
+        "nim": "241011400253",
+        "name": "Syahrul Khairul Aqbar",
+        "department": "Teknik Informatika",
+        "age": 22,
+        "gpa": 2.85,
+        "createdAt": "2024-01-15T08:04:00.000Z",
+        "updatedAt": "2024-01-15T08:04:00.000Z"
+    },
+    {
+        "id": 6,
+        "nim": "241011400233",
+        "name": "Firman Gani",
+        "department": "Teknik Informatika",
+        "age": 19,
+        "gpa": 3.08,
+        "createdAt": "2024-01-15T08:05:00.000Z",
+        "updatedAt": "2024-01-15T08:05:00.000Z"
+    },
+    {
+        "id": 7,
+        "nim": "241011400232",
+        "name": "Rido Maulidan",
+        "department": "Teknik Informatika",
+        "age": 21,
+        "gpa": 3.51,
+        "createdAt": "2024-01-15T08:06:00.000Z",
+        "updatedAt": "2024-01-15T08:06:00.000Z"
+    },
+    {
+        "id": 8,
+        "nim": "241011400269",
+        "name": "Gilang Novrizal",
+        "department": "Teknik Informatika",
+        "age": 18,
+        "gpa": 3.02,
+        "createdAt": "2024-01-15T08:07:00.000Z",
+        "updatedAt": "2024-01-15T08:07:00.000Z"
+    },
+    {
+        "id": 9,
+        "nim": "241011400256",
+        "name": "M Raka Nuridwan",
+        "department": "Teknik Informatika",
+        "age": 20,
+        "gpa": 3.74,
+        "createdAt": "2024-01-15T08:08:00.000Z",
+        "updatedAt": "2024-01-15T08:08:00.000Z"
+    },
+    {
+        "id": 10,
+        "nim": "241011401525",
+        "name": "Muhammad Jiwa Islamutidar",
+        "department": "Teknik Informatika",
+        "age": 22,
+        "gpa": 3.33,
+        "createdAt": "2024-01-15T08:09:00.000Z",
+        "updatedAt": "2024-01-15T08:09:00.000Z"
+    },
+    {
+        "id": 11,
+        "nim": "241011400235",
+        "name": "Muhammad Ichsan Fachrulrozi",
+        "department": "Teknik Informatika",
+        "age": 17,
+        "gpa": 2.88,
+        "createdAt": "2024-01-15T08:10:00.000Z",
+        "updatedAt": "2024-01-15T08:10:00.000Z"
+    },
+    {
+        "id": 12,
+        "nim": "241011400228",
+        "name": "Adrian Mulya Akbar",
+        "department": "Teknik Informatika",
+        "age": 21,
+        "gpa": 3.69,
+        "createdAt": "2024-01-15T08:11:00.000Z",
+        "updatedAt": "2024-01-15T08:11:00.000Z"
+    },
+    {
+        "id": 13,
+        "nim": "241011400261",
+        "name": "Muzayin Arifin",
+        "department": "Teknik Informatika",
+        "age": 18,
+        "gpa": 3.14,
+        "createdAt": "2024-01-15T08:12:00.000Z",
+        "updatedAt": "2024-01-15T08:12:00.000Z"
+    },
+    {
+        "id": 14,
+        "nim": "241011400276",
+        "name": "Maikel Ade Vahrozi",
+        "department": "Teknik Informatika",
+        "age": 19,
+        "gpa": 3.91,
+        "createdAt": "2024-01-15T08:13:00.000Z",
+        "updatedAt": "2024-01-15T08:13:00.000Z"
+    },
+    {
+        "id": 15,
+        "nim": "241011402026",
+        "name": "Cristian Yuda",
+        "department": "Teknik Informatika",
+        "age": 20,
+        "gpa": 3.27,
+        "createdAt": "2024-01-15T08:14:00.000Z",
+        "updatedAt": "2024-01-15T08:14:00.000Z"
+    },
+    {
+        "id": 16,
+        "nim": "241011403270",
+        "name": "Faya Nur Ridho",
+        "department": "Teknik Informatika",
+        "age": 22,
+        "gpa": 2.93,
+        "createdAt": "2024-01-15T08:15:00.000Z",
+        "updatedAt": "2024-01-15T08:15:00.000Z"
+    },
+    {
+        "id": 17,
+        "nim": "241011401526",
+        "name": "Alfrendo Suranta",
+        "department": "Teknik Informatika",
+        "age": 19,
+        "gpa": 3.48,
+        "createdAt": "2024-01-15T08:16:00.000Z",
+        "updatedAt": "2024-01-15T08:16:00.000Z"
+    },
+    {
+        "id": 18,
+        "nim": "241011402051",
+        "name": "Afdal Laia",
+        "department": "Teknik Informatika",
+        "age": 21,
+        "gpa": 3.01,
+        "createdAt": "2024-01-15T08:17:00.000Z",
+        "updatedAt": "2024-01-15T08:17:00.000Z"
+    },
+    {
+        "id": 19,
+        "nim": "251011401655",
+        "name": "Ulya Khodilah",
+        "department": "Teknik Informatika",
+        "age": 17,
+        "gpa": 3.84,
+        "createdAt": "2024-01-15T08:18:00.000Z",
+        "updatedAt": "2024-01-15T08:18:00.000Z"
+    },
+    {
+        "id": 20,
+        "nim": "241011401528",
+        "name": "Fadly Himawan Saputra",
+        "department": "Teknik Informatika",
+        "age": 18,
+        "gpa": 2.76,
+        "createdAt": "2024-01-15T08:19:00.000Z",
+        "updatedAt": "2024-01-15T08:19:00.000Z"
+    },
+    {
+        "id": 21,
+        "nim": "241011400266",
+        "name": "Affan Dhiya Dil Awar",
+        "department": "Teknik Informatika",
+        "age": 22,
+        "gpa": 3.57,
+        "createdAt": "2024-01-15T08:20:00.000Z",
+        "updatedAt": "2024-01-15T08:20:00.000Z"
+    },
+    {
+        "id": 22,
+        "nim": "241011400277",
+        "name": "Bayu Abiakso",
+        "department": "Teknik Informatika",
+        "age": 20,
+        "gpa": 3.11,
+        "createdAt": "2024-01-15T08:21:00.000Z",
+        "updatedAt": "2024-01-15T08:21:00.000Z"
+    },
+    {
+        "id": 23,
+        "nim": "241011401536",
+        "name": "Medina Fikanti",
+        "department": "Teknik Informatika",
+        "age": 17,
+        "gpa": 3.66,
+        "createdAt": "2024-01-15T08:22:00.000Z",
+        "updatedAt": "2024-01-15T08:22:00.000Z"
+    },
+    {
+        "id": 24,
+        "nim": "241011401533",
+        "name": "Muhammad Zidan",
+        "department": "Teknik Informatika",
+        "age": 19,
+        "gpa": 3.22,
+        "createdAt": "2024-01-15T08:23:00.000Z",
+        "updatedAt": "2024-01-15T08:23:00.000Z"
+    },
+    {
+        "id": 25,
+        "nim": "241011402755",
+        "name": "Adlina Nailiyanti",
+        "department": "Teknik Informatika",
+        "age": 20,
+        "gpa": 3.40,
+        "createdAt": "2024-01-15T08:24:00.000Z",
+        "updatedAt": "2024-01-15T08:24:00.000Z"
+    },
+    {
+        "id": 26,
+        "nim": "241011400268",
+        "name": "Fariz Aditya Ardhana",
+        "department": "Teknik Informatika",
+        "age": 21,
+        "gpa": 3.06,
+        "createdAt": "2024-01-15T08:25:00.000Z",
+        "updatedAt": "2024-01-15T08:25:00.000Z"
+    },
+    {
+        "id": 27,
+        "nim": "241011400231",
+        "name": "M Fachrurozi",
+        "department": "Teknik Informatika",
+        "age": 18,
+        "gpa": 2.99,
+        "createdAt": "2024-01-15T08:26:00.000Z",
+        "updatedAt": "2024-01-15T08:26:00.000Z"
+    },
+    {
+        "id": 28,
+        "nim": "241011401936",
+        "name": "Timoty Tarunaselley",
+        "department": "Teknik Informatika",
+        "age": 20,
+        "gpa": 3.73,
+        "createdAt": "2024-01-15T08:27:00.000Z",
+        "updatedAt": "2024-01-15T08:27:00.000Z"
+    },
+    {
+        "id": 29,
+        "nim": "241011400254",
+        "name": "Stevania N Sading",
+        "department": "Teknik Informatika",
+        "age": 22,
+        "gpa": 3.67,
+        "createdAt": "2024-01-15T08:28:00.000Z",
+        "updatedAt": "2024-01-15T08:28:00.000Z"
+    },
+    {
+        "id": 30,
+        "nim": "241011402113",
+        "name": "Elisabeth Tes Lae",
+        "department": "Teknik Informatika",
+        "age": 17,
+        "gpa": 3.18,
+        "createdAt": "2024-01-15T08:29:00.000Z",
+        "updatedAt": "2024-01-15T08:29:00.000Z"
+    }
+]

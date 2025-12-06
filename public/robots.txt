@@ -1,0 +1,12 @@
+# Robots.txt for UNPAM Student Management System
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /login
+
+# Sitemap
+Sitemap: https://student-app.vercel.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ThemeToggle from '@/components/ThemeToggle';
+import Image from 'next/image';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -48,13 +49,18 @@ export default function LoginPage() {
             <div className="w-full max-w-md">
                 {/* Logo */}
                 <div className="text-center mb-8">
-                    <div className="w-16 h-16 rounded-2xl bg-[var(--color-primary)] flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
+                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                        <Image
+                            src="/unpam-logo.png"
+                            alt="UNPAM Logo"
+                            width={80}
+                            height={80}
+                            className="object-contain"
+                            priority
+                        />
                     </div>
-                    <h1 className="text-2xl font-bold text-[var(--color-text)]">Student Management</h1>
-                    <p className="text-[var(--color-text-muted)] mt-2">Sign in to your account</p>
+                    <h1 className="text-2xl font-bold text-[var(--color-text)]">UNPAM Student Portal</h1>
+                    <p className="text-[var(--color-text-muted)] mt-2">Sign in to access the dashboard</p>
                 </div>
 
                 {/* Login Card */}
@@ -114,8 +120,8 @@ export default function LoginPage() {
                     </form>
 
                     <div className="mt-6 pt-6 border-t border-[var(--color-border)] text-center">
-                        <p className="text-sm text-[var(--color-text-muted)]">
-                            Default credentials: <span className="font-medium">admin / admin123</span>
+                        <p className="text-xs text-[var(--color-text-muted)]">
+                            © 2024 UNPAM - Universitas Pamulang
                         </p>
                     </div>
                 </div>

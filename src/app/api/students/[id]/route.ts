@@ -11,7 +11,7 @@ export async function GET(
         await connectDB();
         const { id } = await params;
 
-        const student = await Student.findById(id);
+        const student = await Student.findById(id).lean();
         if (!student) {
             return NextResponse.json(
                 { success: false, error: 'Student not found' },
@@ -51,7 +51,7 @@ export async function PUT(
             id,
             { ...body, updatedAt: new Date() },
             { new: true, runValidators: true }
-        );
+        ).lean();
 
         if (!student) {
             return NextResponse.json(

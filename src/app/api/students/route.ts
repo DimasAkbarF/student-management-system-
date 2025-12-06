@@ -6,7 +6,7 @@ import Student from '@/lib/models/Student';
 export async function GET() {
     try {
         await connectDB();
-        const students = await Student.find({}).sort({ createdAt: -1 });
+        const students = await Student.find({}).sort({ createdAt: -1 }).lean();
 
         // Convert MongoDB documents to plain objects with id field
         const data = students.map(s => ({
@@ -43,16 +43,17 @@ export async function POST(request: NextRequest) {
         }
 
         const student = await Student.create(body);
+        const studentObj = student.toObject();
 
         const data = {
-            id: student._id.toString(),
-            nim: student.nim,
-            name: student.name,
-            department: student.department,
-            age: student.age,
-            gpa: student.gpa,
-            createdAt: student.createdAt,
-            updatedAt: student.updatedAt
+            id: studentObj._id.toString(),
+            nim: studentObj.nim,
+            name: studentObj.name,
+            department: studentObj.department,
+            age: studentObj.age,
+            gpa: studentObj.gpa,
+            createdAt: studentObj.createdAt,
+            updatedAt: studentObj.updatedAt
         };
 
         return NextResponse.json({ success: true, data }, { status: 201 });

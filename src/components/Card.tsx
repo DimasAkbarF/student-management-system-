@@ -59,45 +59,34 @@ interface StatsCardProps {
 }
 
 export function StatsCard({ title, value, subtitle, icon, trend, color = 'blue' }: StatsCardProps) {
-    // Refined gradient colors - softer and more elegant
     const colorClasses = {
-        blue: 'from-blue-500 to-blue-600',
-        green: 'from-emerald-500 to-emerald-600',
-        purple: 'from-violet-500 to-violet-600',
-        orange: 'from-amber-500 to-orange-500'
-    };
-
-    // Subtle shadow colors matching the card
-    const shadowClasses = {
-        blue: 'shadow-blue-500/20',
-        green: 'shadow-emerald-500/20',
-        purple: 'shadow-violet-500/20',
-        orange: 'shadow-amber-500/20'
+        blue: 'text-blue-500 bg-blue-50 dark:bg-blue-900/10',
+        green: 'text-emerald-500 bg-emerald-50 dark:bg-emerald-900/10',
+        purple: 'text-violet-500 bg-violet-50 dark:bg-violet-900/10',
+        orange: 'text-amber-500 bg-amber-50 dark:bg-amber-900/10'
     };
 
     return (
-        <div className={`rounded-2xl p-6 text-white bg-gradient-to-br ${colorClasses[color]} relative overflow-hidden shadow-xl ${shadowClasses[color]} transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl`}>
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-36 h-36 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4" />
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
-
-            <div className="relative z-10">
-                <div className="flex items-center justify-between">
-                    <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
-                        {icon}
-                    </div>
-                    {trend && (
-                        <span className={`text-sm font-semibold px-2.5 py-1 rounded-full ${trend.isPositive ? 'bg-green-400/30 text-green-100' : 'bg-red-400/30 text-red-100'}`}>
-                            {trend.isPositive ? '↑' : '↓'} {Math.abs(trend.value)}%
-                        </span>
-                    )}
+        <div className="card hover:shadow-md transition-all duration-300">
+            <div className="flex items-start justify-between">
+                <div>
+                    <p className="text-[var(--color-text-secondary)] text-sm font-medium">{title}</p>
+                    <p className="text-3xl font-bold mt-2 text-[var(--color-text)] tracking-tight">{value}</p>
+                    {subtitle && <p className="text-[var(--color-text-muted)] text-sm mt-1">{subtitle}</p>}
                 </div>
-                <div className="mt-5">
-                    <p className="text-white/85 text-sm font-medium">{title}</p>
-                    <p className="text-3xl font-bold mt-1.5 tracking-tight">{value}</p>
-                    {subtitle && <p className="text-white/65 text-sm mt-1.5">{subtitle}</p>}
+                <div className={`p-3 rounded-xl ${colorClasses[color]}`}>
+                    {icon}
                 </div>
             </div>
+
+            {trend && (
+                <div className="mt-4 flex items-center gap-2">
+                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${trend.isPositive ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'}`}>
+                        {trend.isPositive ? '↑' : '↓'} {Math.abs(trend.value)}%
+                    </span>
+                    <span className="text-xs text-[var(--color-text-muted)]">vs last month</span>
+                </div>
+            )}
         </div>
     );
 }

@@ -1,157 +1,78 @@
-# 🎓 Student Management System - UNPAM
+# Student Management System
 
-A modern, professional Student Management Dashboard built with **Next.js 15** and **MongoDB**.
+## Overview
 
-![Next.js](https://img.shields.io/badge/Next.js-15-black)
-![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+The Student Management System is a comprehensive web-based application designed to facilitate the efficient management of student data. Built with modern web technologies, this system provides administrators with robust tools for data entry, retrieval, and analysis, ensuring data accuracy and accessibility.
 
-## ✨ Features
+## Key Features
 
-- 📊 **Dashboard** - Overview with statistics and quick actions
-- 👨‍🎓 **Student CRUD** - Create, Read, Update, Delete students
-- 🔍 **Search** - Linear, Binary, and Sequential search algorithms
-- 📑 **Sort** - Multiple sorting algorithms (Insertion, Bubble, Selection, Merge, Shell)
-- 📥 **Import/Export** - JSON file support
-- 🌙 **Dark Mode** - Elegant dark theme
-- 🔐 **Authentication** - Login system with session management
-- 📱 **Responsive** - Works on desktop and mobile
+### Dashboard
+- **Real-time Statistics**: Provides an immediate overview of total students, average GPA, department distribution, and algorithm metrics.
+- **Data Visualization**: Presents key metrics through clear, professional scorecards.
+- **Quick Actions**: Streamlined access to frequently used functions such as adding students or searching records.
 
-## 🚀 Quick Start
+### Student Management
+- **CRUD Operations**: Complete capability to Create, Read, Update, and Delete student records.
+- **Search Functionality**: Advanced search features utilizing various algorithms (Linear, Binary, etc.) to locate records efficiently.
+- **Sorting Mechanisms**: Implementation of multiple sorting algorithms (Bubble Sort, Merge Sort, etc.) for data organization.
 
-### 1. Clone & Install
+### Technical Architecture
+- **Framework**: Next.js 16 (React Framework)
+- **Database**: MongoDB using Mongoose ODM
+- **Styling**: Tailwind CSS
+- **Authentication**: Custom session-based authentication
 
-```bash
-git clone <your-repo>
-cd student-app
-npm install
-```
+## Algorithms Implemented
 
-### 2. Setup MongoDB Atlas (Free)
+The system demonstrates the practical application of several fundamental computer science algorithms:
 
-1. Go to [MongoDB Atlas](https://cloud.mongodb.com) and create a **free account**
-2. Create a new **Cluster** (choose the FREE tier)
-3. Click **"Connect"** on your cluster
-4. Choose **"Connect your application"**
-5. Copy the connection string
+### Search Algorithms
+- Linear Search
+- Binary Search
+- Sequential Search
 
-### 3. Configure Environment
+### Sort Algorithms
+- Insertion Sort
+- Merge Sort
+- Bubble Sort
+- Selection Sort
+- Shell Sort
 
-Create a `.env.local` file in the root folder:
+## Installation and Setup
 
-```env
-# MongoDB Connection (replace with your actual connection string)
-MONGODB_URI=mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/student-app?retryWrites=true&w=majority
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/yourusername/student-app.git
+    cd student-app
+    ```
 
-# JWT Secret (use any random string)
-JWT_SECRET=your-secret-key-here
-```
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-### 4. Run Development Server
+3.  **Configure Environment Variables**
+    Create a `.env.local` file in the root directory and add your MongoDB connection string:
+    ```
+    MONGODB_URI=your_mongodb_connection_string
+    ```
 
-```bash
-npm run dev
-```
+4.  **Run the development server**
+    ```bash
+    npm run dev
+    ```
 
-Open [http://localhost:3000](http://localhost:3000)
+    The application will be accessible at `http://localhost:3000`.
 
-### 5. Seed Initial Data
+## Deployment
 
-After the app is running, visit:
-```
-http://localhost:3000/api/seed
-```
+This project is optimized for deployment on Vercel.
 
-Or use POST request to seed data:
-```bash
-curl -X POST http://localhost:3000/api/seed
-```
+1.  Push the code to a Git repository.
+2.  Import the project into Vercel.
+3.  Configure the `MONGODB_URI` environment variable in the Vercel dashboard.
+4.  Deploy.
 
-This will create:
-- 30 sample students
-- Admin user (username: `admin`, password: `admin123`)
+## License
 
-## 🌐 Deploy to Vercel
-
-### 1. Push to GitHub
-
-```bash
-git add .
-git commit -m "Ready for deployment"
-git push
-```
-
-### 2. Deploy on Vercel
-
-1. Go to [vercel.com](https://vercel.com)
-2. Import your GitHub repository
-3. Add Environment Variables:
-   - `MONGODB_URI` = your MongoDB connection string
-   - `JWT_SECRET` = your secret key
-4. Click **Deploy**
-
-### 3. Seed Production Database
-
-After deployment, visit:
-```
-https://your-app.vercel.app/api/seed
-```
-
-## 📂 Project Structure
-
-```
-src/
-├── app/
-│   ├── (dashboard)/      # Protected dashboard pages
-│   │   ├── dashboard/    # Main dashboard
-│   │   ├── students/     # Student management
-│   │   ├── search/       # Search page
-│   │   └── sort/         # Sort page
-│   ├── api/              # API routes
-│   │   ├── auth/         # Authentication
-│   │   ├── students/     # Student CRUD
-│   │   └── seed/         # Database seeding
-│   └── login/            # Login page
-├── components/           # Reusable components
-├── lib/                  # Database utilities
-│   ├── mongodb.ts        # MongoDB connection
-│   └── models/           # Mongoose models
-└── styles/               # Global CSS
-```
-
-## 🔑 Default Login
-
-- **Username:** `admin`
-- **Password:** `admin123`
-
-## 🛠️ Technologies
-
-- **Framework:** Next.js 15 (App Router)
-- **Database:** MongoDB Atlas (Free tier)
-- **ODM:** Mongoose
-- **Styling:** CSS with CSS Variables
-- **Language:** TypeScript
-
-## 📝 API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /api/students | Get all students |
-| POST | /api/students | Create student |
-| GET | /api/students/[id] | Get single student |
-| PUT | /api/students/[id] | Update student |
-| DELETE | /api/students/[id] | Delete student |
-| GET | /api/students/stats | Get statistics |
-| POST | /api/students/import | Import students |
-| GET | /api/students/export | Export students |
-| POST | /api/auth/login | Login |
-| POST | /api/auth/logout | Logout |
-| POST | /api/seed | Seed database |
-
-## 📄 License
-
-MIT License - Feel free to use for educational purposes.
-
----
-
-Made with ❤️ for UNPAM
+This project is licensed under the MIT License.

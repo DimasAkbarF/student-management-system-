@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ThemeToggle from '@/components/ThemeToggle';
-import Image from 'next/image';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -47,18 +46,21 @@ export default function LoginPage() {
             </div>
 
             <div className="w-full max-w-md">
-                {/* Logo - Centered above text */}
+                {/* Logo and Title Section - Logo above text */}
                 <div className="text-center mb-8">
-                    <div className="w-20 h-20 mx-auto mb-4 overflow-hidden">
-                        <Image
-                            src="/unpam-logo.png"
+                    {/* UNPAM Logo */}
+                    <div className="flex justify-center mb-6">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/id/6/62/UNPAM_logo1.png"
                             alt="UNPAM Logo"
-                            width={80}
-                            height={80}
+                            width={100}
+                            height={100}
                             className="object-contain"
-                            priority
+                            style={{ width: '100px', height: '100px' }}
                         />
                     </div>
+                    {/* Title and Subtitle */}
                     <h1 className="text-2xl font-bold text-[var(--color-text)]">Student Management</h1>
                     <p className="text-[var(--color-text-muted)] mt-2">Sign in to your account</p>
                 </div>
@@ -121,7 +123,7 @@ export default function LoginPage() {
 
                     <div className="mt-6 pt-6 border-t border-[var(--color-border)] text-center">
                         <p className="text-xs text-[var(--color-text-muted)]">
-                            © 2024 UNPAM - Universitas Pamulang
+                            © 2025 Student Management
                         </p>
                     </div>
                 </div>

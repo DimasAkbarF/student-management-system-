@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { StatsCard } from '@/components/Card';
 import Card from '@/components/Card';
 import Link from 'next/link';
+import { useUser } from '@/context/UserContext';
 
 interface Stats {
     total: number;
@@ -35,16 +36,18 @@ export default function DashboardPage() {
             .finally(() => setIsLoading(false));
     }, []);
 
+    const { user } = useUser();
+
     return (
         <div className="dashboard">
             {/* Header Section */}
-            <div className="dashboard-header">
-                <h1>Dashboard</h1>
+            <div className="dashboard-header animate-in delay-0 text-center">
+                <h1>Halo, {user?.username || 'Admin'}! 👋</h1>
                 <p>Welcome back! Here&apos;s an overview of your student management system.</p>
             </div>
 
             {/* Stats Grid */}
-            <section className="dashboard-section">
+            <section className="dashboard-section animate-in delay-100">
                 <div className="stats-grid">
                     <StatsCard
                         title="Total Students"
@@ -75,7 +78,7 @@ export default function DashboardPage() {
             </section>
 
             {/* Quick Actions & Departments */}
-            <section className="dashboard-section">
+            <section className="dashboard-section animate-in delay-200">
                 <div className="section-grid">
                     <Card title="Quick Actions">
                         <div className="quick-actions-grid">
@@ -123,7 +126,7 @@ export default function DashboardPage() {
             </section>
 
             {/* Time Complexity Panel */}
-            <section className="dashboard-section">
+            <section className="dashboard-section animate-in delay-300">
                 <Card
                     title="Algorithm Time Complexity"
                     subtitle="Reference for search and sort algorithms"

@@ -135,6 +135,23 @@ h6 {
 
 p {
   line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.dark p {
+  color: var(--color-text-muted);
+}
+
+/* Text utility classes for theme-aware colors */
+.text-primary {
+  color: var(--color-text);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
   color: var(--color-text-muted);
 }
 
@@ -351,8 +368,21 @@ a:hover {
 .table td {
   padding: 1rem 1.25rem;
   font-size: 0.875rem;
-  color: var(--color-text);
+  color: var(--color-text-secondary);
   border-bottom: 1px solid var(--color-border);
+}
+
+.dark .table td {
+  color: var(--color-text);
+}
+
+.table td.font-medium {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.dark .table td.font-medium {
+  color: #F8FAFC;
 }
 
 .table tbody tr {
@@ -858,8 +888,12 @@ a:hover {
 }
 
 .dashboard-header p {
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   font-size: 0.95rem;
+}
+
+.dark .dashboard-header p {
+  color: var(--color-text-muted);
 }
 
 .dashboard-section {
@@ -1203,4 +1237,46 @@ a:hover {
 ::selection {
   background-color: rgba(59, 130, 246, 0.2);
   color: var(--color-text);
+}
+
+/* Animations Utility Classes */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  opacity: 0;
+  animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-0 {
+  animation-delay: 0ms;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
 }

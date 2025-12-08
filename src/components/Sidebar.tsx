@@ -33,8 +33,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 {/* Logo Section - Logo above text */}
                 <div className="sidebar-logo">
                     <Link href="/dashboard" className="flex flex-col items-center text-center">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                            src="/unpam-logo.png"
+                            src="https://upload.wikimedia.org/wikipedia/id/6/62/UNPAM_logo1.png"
                             alt="UNPAM Logo"
                             className="sidebar-logo-image mb-3"
                         />
@@ -67,7 +68,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
                 {/* Footer */}
                 <div className="sidebar-footer">
-                    <p>© 2024 UNPAM StudentMS</p>
+                    <p>© 2025 Student Management</p>
                     <p style={{ marginTop: '0.25rem', opacity: 0.7 }}>Version 1.0.0</p>
                 </div>
             </aside>

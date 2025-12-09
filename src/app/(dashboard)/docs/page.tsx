@@ -7,8 +7,59 @@ import Card from '@/components/Card';
  * Comprehensive guide for Student Management System features
  */
 
+// Type definitions for content items
+interface OverviewItem {
+    subtitle: string;
+    text?: string;
+    items?: string[];
+}
+
+interface CRUDItem {
+    term: string;
+    desc: string;
+    complexity: string;
+}
+
+interface SearchItem {
+    term: string;
+    desc: string;
+    complexity: string;
+    best: string;
+    worst: string;
+    useCase: string;
+}
+
+interface SortItem {
+    term: string;
+    desc: string;
+    complexity?: string;
+    best?: string;
+    worst?: string;
+    stable?: boolean;
+    type?: string;
+}
+
+interface ValidationItem {
+    term: string;
+    pattern: string;
+    desc: string;
+    example: string;
+}
+
+interface GenericItem {
+    term: string;
+    desc: string;
+}
+
+interface FeatureCategory {
+    id: string;
+    title: string;
+    description: string;
+    content: OverviewItem[] | CRUDItem[] | SearchItem[] | SortItem[] | ValidationItem[] | GenericItem[];
+}
+
 // Feature categories with detailed explanations
-const featureCategories = [
+const featureCategories: FeatureCategory[] = [
     {
         id: 'overview',
         title: '📋 Overview',
@@ -242,7 +293,7 @@ export default function DocsPage() {
                         {/* Overview type */}
                         {category.id === 'overview' && (
                             <div className="space-y-4">
-                                {category.content.map((item, idx) => (
+                                {(category.content as OverviewItem[]).map((item, idx) => (
                                     <div key={idx} className="p-4 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)]">
                                         <h4 className="font-semibold text-[var(--color-text)] mb-2">{item.subtitle}</h4>
                                         {item.text && <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.text}</p>}
@@ -261,7 +312,7 @@ export default function DocsPage() {
                         {/* CRUD type */}
                         {category.id === 'crud' && (
                             <div className="space-y-3">
-                                {category.content.map((item, idx) => (
+                                {(category.content as CRUDItem[]).map((item, idx) => (
                                     <div key={idx} className="p-4 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)]">
                                         <div className="flex items-center justify-between mb-2">
                                             <h4 className="font-semibold text-[var(--color-text)]">{item.term}</h4>
@@ -276,7 +327,7 @@ export default function DocsPage() {
                         {/* Search type */}
                         {category.id === 'search' && (
                             <div className="space-y-4">
-                                {category.content.map((item, idx) => (
+                                {(category.content as SearchItem[]).map((item, idx) => (
                                     <div key={idx} className="p-4 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)]">
                                         <div className="flex items-center justify-between mb-2">
                                             <h4 className="font-semibold text-[var(--color-text)]">{item.term}</h4>
@@ -305,7 +356,7 @@ export default function DocsPage() {
                         {/* Sort type */}
                         {category.id === 'sort' && (
                             <div className="space-y-3">
-                                {category.content.map((item, idx) => (
+                                {(category.content as SortItem[]).map((item, idx) => (
                                     <div key={idx} className="p-4 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)]">
                                         <div className="flex items-center justify-between mb-2">
                                             <h4 className="font-semibold text-[var(--color-text)]">{item.term}</h4>
@@ -342,7 +393,7 @@ export default function DocsPage() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {category.content.map((item, idx) => (
+                                        {(category.content as ValidationItem[]).map((item, idx) => (
                                             <tr key={idx}>
                                                 <td className="font-medium">{item.term}</td>
                                                 <td><code className="text-xs bg-[var(--color-surface)] px-2 py-1 rounded">{item.pattern}</code></td>
@@ -358,7 +409,7 @@ export default function DocsPage() {
                         {/* OOP, Error, File type */}
                         {['oop', 'error', 'file'].includes(category.id) && (
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                {category.content.map((item, idx) => (
+                                {(category.content as GenericItem[]).map((item, idx) => (
                                     <div key={idx} className="p-4 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)]">
                                         <h4 className="font-semibold text-[var(--color-text)] mb-2 flex items-center gap-2">
                                             <span className="w-2 h-2 rounded-full bg-[var(--color-primary)]"></span>

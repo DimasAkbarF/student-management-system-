@@ -1,11 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 interface SidebarProps {
     isOpen: boolean;
     onClose: () => void;
+}
+
+interface User {
+    username: string;
 }
 
 const navItems = [
@@ -13,10 +18,41 @@ const navItems = [
     { href: '/students', label: 'Students', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' },
     { href: '/search', label: 'Search', icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' },
     { href: '/sort', label: 'Sort', icon: 'M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12' },
+    { href: '/docs', label: 'Documentation', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
 ];
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
     const pathname = usePathname();
+    const router = useRouter();
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        // Get user from cookie
+        const getCookie = (name: string) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop()?.split(';').shift();
+            return null;
+        };
+
+        const username = getCookie('username');
+        if (username) {
+            setUser({ username: decodeURIComponent(username) });
+        }
+    }, []);
+
+    const handleLogout = async () => {
+        try {
+            await fetch('/api/auth/logout', { method: 'POST' });
+            router.push('/login');
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    };
+
+    const getInitials = (name: string) => {
+        return name.substring(0, 2).toUpperCase();
+    };
 
     return (
         <>
@@ -30,18 +66,18 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
             {/* Sidebar */}
             <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
-                {/* Logo Section - Logo above text */}
+                {/* Logo Section */}
                 <div className="sidebar-logo">
-                    <Link href="/dashboard" className="flex flex-col items-center text-center">
+                    <Link href="/dashboard" className="sidebar-logo-link">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                             src="https://upload.wikimedia.org/wikipedia/id/6/62/UNPAM_logo1.png"
                             alt="UNPAM Logo"
-                            className="sidebar-logo-image mb-3"
+                            className="sidebar-logo-image"
                         />
-                        <div>
-                            <h1 className="text-lg font-bold text-[var(--color-text)]">UNPAM</h1>
-                            <p className="text-xs text-[var(--color-text-muted)]">Student Management</p>
+                        <div className="sidebar-logo-text">
+                            <h1>STUDENT</h1>
+                            <p>Data Management</p>
                         </div>
                     </Link>
                 </div>
@@ -66,10 +102,31 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                     </ul>
                 </nav>
 
+                {/* User Profile Section */}
+                <div className="sidebar-user">
+                    <div className="sidebar-user-info">
+                        <div className="sidebar-user-avatar">
+                            {user ? getInitials(user.username) : 'U'}
+                        </div>
+                        <div className="sidebar-user-details">
+                            <span className="sidebar-user-name">{user?.username || 'User'}</span>
+                            <span className="sidebar-user-role">Administrator</span>
+                        </div>
+                    </div>
+                    <button
+                        onClick={handleLogout}
+                        className="sidebar-logout-btn"
+                        title="Logout"
+                    >
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                    </button>
+                </div>
+
                 {/* Footer */}
                 <div className="sidebar-footer">
                     <p>© 2025 Student Management</p>
-                    <p style={{ marginTop: '0.25rem', opacity: 0.7 }}>Version 1.0.0</p>
                 </div>
             </aside>
         </>

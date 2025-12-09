@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Card from '@/components/Card';
 import { ConfirmModal } from '@/components/Modal';
 import { IStudent } from '@/models/Student';
+import { getInitials, getAvatarColor } from '@/utils/avatar';
 
 export default function StudentDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
@@ -43,6 +44,17 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
         return { text: 'Needs Improvement', color: 'badge-danger' };
     };
 
+    // Large Avatar component for detail page
+    const StudentAvatar = ({ name }: { name: string }) => {
+        const initials = getInitials(name);
+        const { gradient } = getAvatarColor(name);
+        return (
+            <div className={`w-24 h-24 rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center text-white text-2xl font-semibold shadow-lg`}>
+                {initials}
+            </div>
+        );
+    };
+
     if (isLoading) {
         return (
             <div className="flex justify-center items-center min-h-[400px]">
@@ -75,19 +87,17 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
 
             {/* Header Card */}
             <Card className="mb-6">
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-3xl font-bold">
-                        {student.name.charAt(0)}
-                    </div>
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+                    <StudentAvatar name={student.name} />
                     <div className="flex-1">
                         <h1 className="text-2xl font-bold text-[var(--color-text)]">{student.name}</h1>
-                        <p className="text-[var(--color-text-muted)]">{student.department}</p>
-                        <div className="flex flex-wrap gap-2 mt-2">
+                        <p className="text-[var(--color-text-muted)] mt-1">{student.department}</p>
+                        <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-3">
                             <span className="badge badge-primary">NIM: {student.nim}</span>
                             <span className={`badge ${gpaInfo.color}`}>{gpaInfo.text}</span>
                         </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 mt-4 sm:mt-0">
                         <Link href={`/students/edit/${id}`} className="btn btn-primary">Edit</Link>
                         <button onClick={() => setShowDelete(true)} className="btn btn-danger">Delete</button>
                     </div>

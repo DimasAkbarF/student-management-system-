@@ -8,6 +8,7 @@ import { ConfirmModal } from '@/components/Modal';
 import Modal from '@/components/Modal';
 import FileUploader from '@/components/FileUploader';
 import { IStudent } from '@/models/Student';
+import { getInitials, getAvatarColor } from '@/utils/avatar';
 
 export default function StudentsPage() {
     const router = useRouter();
@@ -15,6 +16,8 @@ export default function StudentsPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [deleteId, setDeleteId] = useState<number | null>(null);
     const [isDeleting, setIsDeleting] = useState(false);
+    const [showDeleteAll, setShowDeleteAll] = useState(false);
+    const [isDeletingAll, setIsDeletingAll] = useState(false);
     const [showImport, setShowImport] = useState(false);
     const [importData, setImportData] = useState<Record<string, unknown>[] | null>(null);
     const [importMode, setImportMode] = useState<'append' | 'replace'>('append');
@@ -53,6 +56,23 @@ export default function StudentsPage() {
         }
     };
 
+    const handleDeleteAll = async () => {
+        setIsDeletingAll(true);
+        try {
+            const res = await fetch('/api/students/delete-all', { method: 'DELETE' });
+            const data = await res.json();
+            if (data.success) {
+                setStudents([]);
+                setMessage({ type: 'success', text: data.message });
+            } else {
+                setMessage({ type: 'error', text: data.error });
+            }
+        } finally {
+            setIsDeletingAll(false);
+            setShowDeleteAll(false);
+        }
+    };
+
     const handleExport = () => {
         window.open('/api/students/export', '_blank');
     };
@@ -80,9 +100,32 @@ export default function StudentsPage() {
         }
     };
 
+    // Avatar component for table
+    const StudentAvatar = ({ name }: { name: string }) => {
+        const initials = getInitials(name);
+        const { gradient } = getAvatarColor(name);
+        return (
+            <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${gradient} flex items-center justify-center text-white text-xs font-medium shrink-0`}>
+                {initials}
+            </div>
+        );
+    };
+
     const columns = [
+        {
+            key: 'avatar',
+            header: '',
+            className: 'w-12',
+            render: (s: IStudent) => <StudentAvatar name={s.name} />
+        },
+        {
+            key: 'name',
+            header: 'Name',
+            render: (s: IStudent) => (
+                <span className="font-medium text-[var(--color-text)]">{s.name}</span>
+            )
+        },
         { key: 'nim', header: 'NIM' },
-        { key: 'name', header: 'Name' },
         { key: 'department', header: 'Department' },
         { key: 'age', header: 'Age', className: 'text-center' },
         {
@@ -117,11 +160,17 @@ export default function StudentsPage() {
         <div>
             {/* Header */}
             <div className="dashboard-header flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
+                <div className="text-left">
                     <h1>Students</h1>
-                    <p>Manage your student records</p>
+                    <p>Manage your student records ({students.length} total)</p>
                 </div>
                 <div className="flex flex-wrap gap-3">
+                    {students.length > 0 && (
+                        <button onClick={() => setShowDeleteAll(true)} className="btn btn-danger">
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                            Remove All
+                        </button>
+                    )}
                     <button onClick={() => setShowImport(true)} className="btn btn-secondary">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
                         Import
@@ -132,7 +181,7 @@ export default function StudentsPage() {
                     </button>
                     <Link href="/students/add" className="btn btn-primary">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
-                        Add Student
+                        <span>Add Student</span>
                     </Link>
                 </div>
             </div>
@@ -165,6 +214,17 @@ export default function StudentsPage() {
                 message="Are you sure you want to delete this student? This action cannot be undone."
                 confirmText="Delete"
                 isLoading={isDeleting}
+            />
+
+            {/* Delete All Confirmation */}
+            <ConfirmModal
+                isOpen={showDeleteAll}
+                onClose={() => setShowDeleteAll(false)}
+                onConfirm={handleDeleteAll}
+                title="Delete All Students"
+                message={`Are you sure you want to delete ALL ${students.length} students? This will free up database storage but cannot be undone.`}
+                confirmText="Delete All"
+                isLoading={isDeletingAll}
             />
 
             {/* Import Modal */}

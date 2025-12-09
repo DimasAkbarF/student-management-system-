@@ -123,7 +123,7 @@ export default function LoginPage() {
 
                     <div className="mt-6 pt-6 border-t border-[var(--color-border)] text-center">
                         <p className="text-xs text-[var(--color-text-muted)]">
-                            © 2025 Student Management
+                            © 2025 Student Management System
                         </p>
                     </div>
                 </div>

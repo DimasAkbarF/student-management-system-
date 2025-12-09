@@ -39,7 +39,7 @@ const initialStudents = [
 
 // Initial admin user
 const initialUser = {
-    username: 'admin',
+    username: 'DimasAkbar',
     password: 'admin123',
     role: 'admin'
 };

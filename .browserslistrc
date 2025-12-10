@@ -1,0 +1,19 @@
+# Browserslist configuration
+# Target modern browsers only to eliminate legacy polyfills
+# This removes Array.at, flat, flatMap, Object.fromEntries, trimStart, trimEnd polyfills
+
+# Production: Modern browsers from last 2 years
+[production]
+>0.5%
+last 2 versions
+Firefox ESR
+not dead
+not IE 11
+not op_mini all
+supports es6-module
+
+# Development: Same as production for consistency
+[development]
+last 1 chrome version
+last 1 firefox version
+last 1 safari version

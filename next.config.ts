@@ -32,11 +32,23 @@ const nextConfig: NextConfig = {
   // Production source maps disabled for smaller bundles
   productionBrowserSourceMaps: false,
 
-  // Compiler optimizations
+  // Compiler optimizations - SWC minification
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {
       exclude: ['error', 'warn'],
     } : false,
+  },
+
+  // Turbopack root configuration
+  turbopack: {
+    root: process.cwd(),
+  },
+
+  // Modular imports for smaller bundles
+  modularizeImports: {
+    'react-icons': {
+      transform: 'react-icons/{{member}}',
+    },
   },
 
   // Headers for security and aggressive caching

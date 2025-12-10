@@ -39,12 +39,13 @@ export default function DashboardPage() {
     const { user } = useUser();
 
     return (
-        <div className="dashboard">
+        <main className="dashboard" role="main" aria-label="Dashboard utama">
             {/* Header Section */}
-            <div className="dashboard-header animate-in delay-0 text-center">
+            <header className="dashboard-header animate-in delay-0 text-center">
                 <h1>Halo, {user?.username || 'Admin'}! 👋</h1>
                 <p>Welcome back! Here&apos;s an overview of your student management system.</p>
-            </div>
+            </header>
+
 
             {/* Stats Grid */}
             <section className="dashboard-section animate-in delay-100">
@@ -159,6 +160,6 @@ export default function DashboardPage() {
                     </div>
                 </Card>
             </section>
-        </div>
+        </main>
     );
 }

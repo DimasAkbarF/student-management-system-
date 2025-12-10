@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode, useCallback, useMemo } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -11,6 +11,7 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
     const [theme, setThemeState] = useState<Theme>('light');
@@ -31,19 +32,26 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         }
     }, []);
 
-    const setTheme = (newTheme: Theme) => {
+    const setTheme = useCallback((newTheme: Theme) => {
         setThemeState(newTheme);
         localStorage.setItem('theme', newTheme);
         document.documentElement.classList.toggle('dark', newTheme === 'dark');
-    };
+    }, []);
 
-    const toggleTheme = () => {
+    const toggleTheme = useCallback(() => {
         setTheme(theme === 'light' ? 'dark' : 'light');
-    };
+    }, [theme, setTheme]);
+
+    // Memoize context value to prevent unnecessary re-renders
+    const contextValue = useMemo(() => ({
+        theme,
+        toggleTheme,
+        setTheme
+    }), [theme, toggleTheme, setTheme]);
 
     // Always provide context, even before mount
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
+        <ThemeContext.Provider value={contextValue}>
             {mounted ? children : <div style={{ visibility: 'hidden' }}>{children}</div>}
         </ThemeContext.Provider>
     );

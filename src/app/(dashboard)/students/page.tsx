@@ -159,8 +159,8 @@ export default function StudentsPage() {
     return (
         <div>
             {/* Header */}
-            <div className="dashboard-header flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div className="text-left">
+            <div className="dashboard-header text-center flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="text-center">
                     <h1>Students</h1>
                     <p>Manage your student records ({students.length} total)</p>
                 </div>

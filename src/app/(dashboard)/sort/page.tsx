@@ -144,7 +144,7 @@ export default function SortPage() {
 
     return (
         <div>
-            <div className="mb-6">
+            <div className="mb-6 text-center">
                 <h1 className="text-2xl font-bold text-[var(--color-text)]">Sort Students</h1>
                 <p className="text-[var(--color-text-muted)] mt-1">Sort students using different algorithms</p>
             </div>

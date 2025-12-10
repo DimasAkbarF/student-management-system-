@@ -26,7 +26,6 @@ function DashboardLayoutContent({ children }: { children: ReactNode }) {
             <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
             <Navbar
                 onMenuClick={() => setSidebarOpen(!sidebarOpen)}
-                username={user?.username || 'Guest'}
             />
             <main className="main-content">
                 <div className="main-content-inner">

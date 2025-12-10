@@ -113,7 +113,7 @@ function SearchContent() {
 
     return (
         <div>
-            <div className="mb-6">
+            <div className="mb-6 text-center">
                 <h1 className="text-2xl font-bold text-[var(--color-text)]">Search Students</h1>
                 <p className="text-[var(--color-text-muted)] mt-1">Find students using different search algorithms</p>
             </div>

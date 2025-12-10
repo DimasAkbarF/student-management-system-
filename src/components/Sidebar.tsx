@@ -125,9 +125,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 </div>
 
                 {/* Footer */}
-                <div className="sidebar-footer">
+                {/* <div className="sidebar-footer">
                     <p>© 2025 Student Management</p>
-                </div>
+                </div> */}
             </aside>
         </>
     );

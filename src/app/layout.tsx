@@ -193,15 +193,16 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning className={inter.variable}>
       <head>
-        {/* Theme script to prevent flash of wrong theme */}
+        {/* Preconnect to critical origins for faster resource loading */}
+        <link rel="preconnect" href="https://upload.wikimedia.org" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://upload.wikimedia.org" />
+
+        {/* Theme script - inline for instant execution (prevents FOUC) */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;var th=t||(d?'dark':'light');if(th==='dark')document.documentElement.classList.add('dark');else document.documentElement.classList.remove('dark');}catch(e){}})();`
           }}
         />
-
-        {/* Preconnect only for critical origins actually used */}
-        <link rel="dns-prefetch" href="https://cloud.mongodb.com" />
 
         {/* JSON-LD Structured Data */}
         <script

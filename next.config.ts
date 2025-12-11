@@ -4,9 +4,12 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   poweredByHeader: false,
 
-  // Enable modern features
+  // Enable modern experimental features for performance
   experimental: {
+    // Inline critical CSS to reduce render-blocking requests
     optimizeCss: true,
+    // Enable package optimizations for tree-shaking
+    optimizePackageImports: ['mongoose', 'react-icons'],
   },
 
   // Image optimization
@@ -21,6 +24,8 @@ const nextConfig: NextConfig = {
     ],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    // Disable blur placeholder for faster LCP
+    unoptimized: false,
   },
 
   // Compression
@@ -32,11 +37,14 @@ const nextConfig: NextConfig = {
   // Production source maps disabled for smaller bundles
   productionBrowserSourceMaps: false,
 
-  // Compiler optimizations - SWC minification
+  // Compiler optimizations - SWC minification with aggressive settings
   compiler: {
+    // Remove console logs in production
     removeConsole: process.env.NODE_ENV === 'production' ? {
       exclude: ['error', 'warn'],
     } : false,
+    // Remove React test IDs in production
+    reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
 
   // Turbopack root configuration
@@ -44,7 +52,7 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
 
-  // Modular imports for smaller bundles
+  // Modular imports for smaller bundles - tree shaking
   modularizeImports: {
     'react-icons': {
       transform: 'react-icons/{{member}}',

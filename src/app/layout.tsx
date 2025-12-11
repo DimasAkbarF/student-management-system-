@@ -12,106 +12,83 @@ const inter = Inter({
   fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 });
 
-// Base URL for SEO
+// Base URL for SEO - ensuring https
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://student-app-coral.vercel.app';
 
 // Comprehensive SEO Metadata
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "UNPAM Student Management System - Sistem Informasi Mahasiswa",
+    default: "UNPAM Student Management System",
     template: "%s | UNPAM Student Portal"
   },
-  description: "Sistem Manajemen Mahasiswa UNPAM (Universitas Pamulang) - Platform lengkap untuk mengelola data mahasiswa dengan fitur CRUD, pencarian canggih menggunakan Binary Search dan Linear Search, serta pengurutan dengan Merge Sort, Quick Sort, dan algoritma lainnya.",
+  description: "Sistem Manajemen Mahasiswa UNPAM (Universitas Pamulang) - Platform lengkap untuk mengelola data mahasiswa, akademik, dan nilai. Fitur pencarian canggih dan pengurutan data.",
   keywords: [
-    "UNPAM",
-    "Universitas Pamulang",
-    "Student Management System",
-    "Sistem Informasi Mahasiswa",
-    "Data Mahasiswa",
-    "Teknik Informatika",
-    "Portal Mahasiswa",
-    "Academic Management",
-    "Student Portal Indonesia",
-    "Manajemen Akademik"
+    "UNPAM", "Universitas Pamulang", "Student Management System",
+    "Sistem Informasi Mahasiswa", "Data Mahasiswa", "Portal Akademik",
+    "SIAKAD UNPAM", "Mahasiswa UNPAM", "Teknik Informatika"
   ],
-  authors: [
-    { name: "Dimas Akbar", url: baseUrl }
-  ],
+  authors: [{ name: "Dimas Akbar" }, { name: "Universitas Pamulang", url: "https://unpam.ac.id" }],
   creator: "Universitas Pamulang",
-  publisher: "UNPAM - Universitas Pamulang",
+  publisher: "Universitas Pamulang",
+  applicationName: "UNPAM Student Portal",
 
-  // Canonical URL
-  alternates: {
-    canonical: baseUrl,
-  },
-
-  // Robots configuration
+  // Robots - Aggressively Allow Indexing
   robots: {
     index: true,
     follow: true,
-    nocache: false,
     googleBot: {
       index: true,
       follow: true,
-      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
 
-  // Open Graph
+  // Canonical URL
+  alternates: {
+    canonical: './',
+  },
+
+  // Open Graph - Enhanced
   openGraph: {
     type: "website",
     locale: "id_ID",
     url: baseUrl,
     siteName: "UNPAM Student Portal",
     title: "UNPAM Student Management System",
-    description: "Sistem Manajemen Mahasiswa UNPAM dengan fitur lengkap untuk pengelolaan data akademik, pencarian, dan pengurutan menggunakan berbagai algoritma.",
-    images: [
-      {
-        url: `${baseUrl}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: "UNPAM Student Management System",
-        type: 'image/png',
-      },
-    ],
+    description: "Sistem Manajemen Mahasiswa UNPAM. Kelola data mahasiswa, nilai, dan administrasi dengan mudah dan cepat.",
+    images: [{
+      url: '/og-image.png',
+      width: 1200,
+      height: 630,
+      alt: "UNPAM Student Management Dashboard",
+    }],
   },
 
   // Twitter Card
   twitter: {
     card: "summary_large_image",
     title: "UNPAM Student Management System",
-    description: "Sistem Manajemen Mahasiswa UNPAM dengan fitur lengkap untuk pengelolaan data akademik.",
-    images: [`${baseUrl}/og-image.png`],
+    description: "Sistem Manajemen Mahasiswa UNPAM. Platform akademik modern.",
+    images: ['/og-image.png'],
     creator: "@unpam",
   },
 
-  // Icons
+  // Icons & Manifest
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
+  manifest: '/manifest.json',
 
-  // Manifest
-  manifest: "/manifest.json",
-
-  // App info
-  applicationName: "UNPAM Student Portal",
-  category: "Education",
-
-  // Verification (add your actual verification codes)
+  // Verification default (placeholders removed to avoid errors if invalid, or kept generic)
   verification: {
-    google: "your-google-verification-code",
+    other: {
+      "me": ["dimas@example.com"],
+    },
   },
 };
 

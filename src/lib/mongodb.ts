@@ -8,9 +8,7 @@ import mongoose from 'mongoose';
 // MongoDB connection string from environment variable
 const MONGODB_URI = process.env.MONGODB_URI || '';
 
-if (!MONGODB_URI) {
-    throw new Error('Please define MONGODB_URI in your .env.local file');
-}
+
 
 /**
  * Global cache for mongoose connection
@@ -37,6 +35,10 @@ if (!global.mongoose) {
  * Uses connection caching to prevent too many connections
  */
 export async function connectDB(): Promise<typeof mongoose> {
+    if (!MONGODB_URI) {
+        throw new Error('Please define MONGODB_URI in your .env.local file');
+    }
+
     // Return cached connection if available
     if (cached.conn) {
         return cached.conn;

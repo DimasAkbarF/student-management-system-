@@ -8,8 +8,11 @@ export const metadata: Metadata = {
         description: 'Halaman login untuk mengakses sistem manajemen mahasiswa UNPAM.',
     },
     robots: {
-        index: false,
-        follow: false,
+        index: true,
+        follow: true,
+    },
+    alternates: {
+        canonical: '/login',
     },
 };
 

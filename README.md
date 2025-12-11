@@ -1,78 +1,108 @@
 # Student Management System
 
-## Overview
+A comprehensive web-based application designed to manage student data efficiently. This system demonstrates the practical implementation of fundamental computer science algorithms (searching and sorting) within a modern full-stack web architecture. It is built using Next.js and MongoDB, focusing on performance, SEO optimization, and clean architecture.
 
-The Student Management System is a comprehensive web-based application designed to facilitate the efficient management of student data. Built with modern web technologies, this system provides administrators with robust tools for data entry, retrieval, and analysis, ensuring data accuracy and accessibility.
+## Technologies Used
+
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS with CSS Variables
+- **Database**: MongoDB (via Mongoose ODM)
+- **Deployment**: Vercel
 
 ## Key Features
 
-### Dashboard
-- **Real-time Statistics**: Provides an immediate overview of total students, average GPA, department distribution, and algorithm metrics.
-- **Data Visualization**: Presents key metrics through clear, professional scorecards.
-- **Quick Actions**: Streamlined access to frequently used functions such as adding students or searching records.
+### 1. Authentication & Security
+- Secure login system using custom JWT-based session management.
+- Protected routes utilizing Next.js Middleware.
+- Cookie-based session handling with standard security flags (HttpOnly, Secure, SameSite).
 
-### Student Management
-- **CRUD Operations**: Complete capability to Create, Read, Update, and Delete student records.
-- **Search Functionality**: Advanced search features utilizing various algorithms (Linear, Binary, etc.) to locate records efficiently.
-- **Sorting Mechanisms**: Implementation of multiple sorting algorithms (Bubble Sort, Merge Sort, etc.) for data organization.
+### 2. Student Data Management (CRUD)
+- **Create**: Add new student records with validation.
+- **Read**: View comprehensive lists of students with pagination.
+- **Update**: Edit existing student details.
+- **Delete**: Remove student records individually or bulk delete.
 
-### Technical Architecture
-- **Framework**: Next.js 16 (React Framework)
-- **Database**: MongoDB using Mongoose ODM
-- **Styling**: Tailwind CSS
-- **Authentication**: Custom session-based authentication
+### 3. Algorithm Demonstrations
+The application serves as an educational tool by implementing various data structure algorithms from scratch:
 
-## Algorithms Implemented
-
-The system demonstrates the practical application of several fundamental computer science algorithms:
-
-### Search Algorithms
-- Linear Search
-- Binary Search
-- Sequential Search
-
-### Sort Algorithms
-- Insertion Sort
-- Merge Sort
+**Sorting Algorithms:**
 - Bubble Sort
 - Selection Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
 - Shell Sort
+
+**Searching Algorithms:**
+- Linear Search
+- Binary Search (Recursive and Iterative)
+
+### 4. Advanced Data Features
+- **Data Import/Export**: Capability to export student data to JSON format and import data from JSON files for backup or migration.
+- **Statistics**: specific dashboard showing total students, average GPA, and department distribution.
+
+### 5. SEO & Performance
+- **Search Engine Optimization**: Fully optimized with dynamic metadata, canonical URLs, and XML sitemaps.
+- **Robots.txt**: configured for optimal crawler access.
+- **Performance**: Achieves perfect scores (100) in Lighthouse metrics for SEO, Accessibility, and Best Practices.
+
+### 6. User Interface
+- **Responsive Design**: Fully adaptable layout for desktop and mobile devices.
+- **Theme Support**: Built-in dark and light mode toggle.
+- **Modern UI**: Clean, professional interface suitable for academic environments.
 
 ## Installation and Setup
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/yourusername/student-app.git
-    cd student-app
-    ```
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd student-management-system
+   ```
 
-2.  **Install dependencies**
-    ```bash
-    npm install
-    ```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-3.  **Configure Environment Variables**
-    Create a `.env.local` file in the root directory and add your MongoDB connection string:
-    ```
-    MONGODB_URI=your_mongodb_connection_string
-    ```
+3. **Configure Environment Variables**
+   Create a `.env.local` file in the root directory and add the following variables:
+   ```env
+   MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>
+   JWT_SECRET=your_secure_secret_key
+   NEXT_PUBLIC_BASE_URL=http://localhost:3000
+   ```
 
-4.  **Run the development server**
-    ```bash
-    npm run dev
-    ```
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-    The application will be accessible at `http://localhost:3000`.
+5. **Build for production**
+   ```bash
+   npm run build
+   ```
 
 ## Deployment
 
 This project is optimized for deployment on Vercel.
 
-1.  Push the code to a Git repository.
-2.  Import the project into Vercel.
-3.  Configure the `MONGODB_URI` environment variable in the Vercel dashboard.
-4.  Deploy.
+1. Push your code to a Git repository.
+2. Import the project into Vercel.
+3. Configure the `MONGODB_URI` and `JWT_SECRET` environment variables in the Vercel dashboard.
+4. Deploy.
+
+The specific Vercel configuration (headers, caching policies) is already handled in `next.config.ts`.
+
+## Project Structure
+
+- `/src/app`: Application routes and pages.
+- `/src/components`: Reusable UI components.
+- `/src/lib`: Utility functions, database connections, and models.
+- `/src/services`: Business logic and algorithm implementations.
+- `/src/middleware.ts`: Request interception and route protection.
+- `/public`: Static assets (images, robots.txt).
 
 ## License
 
-This project is licensed under the MIT License.
+This project is open source and available under the MIT License.

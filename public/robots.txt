@@ -1,24 +1,3 @@
-# Robots.txt for UNPAM Student Management System
-# Optimized for SEO
-
 User-agent: *
 Allow: /
-Allow: /dashboard
-Allow: /students
-Allow: /search
-Allow: /sort
-Allow: /docs
-
-# Disallow API routes and login
-Disallow: /api/
-Disallow: /login
-
-# Allow important static files
-Allow: /manifest.json
-Allow: /sitemap.xml
-Allow: /favicon.ico
-Allow: /*.js$
-Allow: /*.css$
-
-# Sitemap location
 Sitemap: https://student-app-coral.vercel.app/sitemap.xml
